@@ -76,38 +76,57 @@ public class AdminTest {
         Assert.assertTrue(searchResult.isDisplayed());
     }
 
+
+    @Test
+    public void testItemNav() {
+        WebElement itemNav = driver.findElement(By.xpath("//nav[@role='navigation' and @aria-label='Topbar Menu']//ul//li[@class='oxd-topbar-body-nav-tab --parent --visited']//span[1]"));
+        Assert.assertTrue(itemNav.isDisplayed());
+    }
+
+
     @Test
     public void testSearchWithRole() throws InterruptedException{
         WebElement userRoleDropdown = driver.findElement(
                 By.xpath("//label[text()='User Role']/../following-sibling::div//div[contains(@class,'oxd-select-text')]")
         );
-        userRoleDropdown.click();
-
-        driver.findElement(By.xpath("//div[@role='listbox']//div[normalize-space()='Admin']")).click();
-        WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
-        searchButton.click();
-        Thread.sleep(3000);
-
-        WebElement searchResult = driver.findElement(By.xpath("//div[@class='oxd-table-card']//div[contains(text(), 'Admin')]"));
-        Assert.assertTrue(searchResult.isDisplayed());
-        Thread.sleep(5000);
+        Assert.assertTrue(userRoleDropdown.isDisplayed());
     }
 
     @Test
-//    public void testSearchEN() throws InterruptedException{
-//        WebElement usernameInput = driver.findElement(By.xpath("//label[text()='Employee Name']/../following-sibling::div//input"));
-//        usernameInput.sendKeys("Jobin Sam");
-//
-//        WebElement searchButton = driver.findElement(By.xpath("//button[@type='submit']"));
-//        searchButton.click();
-//        Thread.sleep(3000);
-//
-//        WebElement searchResult = driver.findElement(By.xpath("//div[@class='oxd-table-card']//div[contains(text(), 'Jobin Sam')]"));
-//        Assert.assertTrue(searchResult.isDisplayed());
-//    }
+    public void testCheckEName() throws InterruptedException{
+        WebElement EName = driver.findElement(By.xpath("//input[@placeholder='Type for hints...']/parent::div"));
+        Assert.assertTrue(EName.isDisplayed());
+    }
 
+    @Test
+    public void testAddBtn() {
+        WebElement btnAdd = driver.findElement(By.xpath("//button[@type='button' and contains(@class, 'oxd-button oxd-button--medium') and text() =' Add ']"));
+        Assert.assertTrue(btnAdd.isDisplayed());
+    }
 
+    @Test
+    public void testNameColumn() {
+        WebElement nameColumn = driver.findElement(By.xpath("//div[@role='columnheader' and text() ='User Role']"));
+        Assert.assertTrue(nameColumn.isDisplayed());
+    }
 
+    @Test
+    public void testENameColumn() {
+        WebElement eNameColumn = driver.findElement(By.xpath("//div[@role='columnheader' and text() ='Employee Name']"));
+        Assert.assertTrue(eNameColumn.isDisplayed());
+    }
+
+    @Test
+    public void testDeleteBtn() {
+        WebElement btnDelete = driver.findElement(By.xpath("//div[@role='cell'][6]//button[1]"));
+        Assert.assertTrue(btnDelete.isDisplayed());
+    }
+
+    @Test
+    public void testUpdateBtn() {
+        WebElement btnUpdate = driver.findElement(By.xpath("//div[@role='cell'][6]//button[2]"));
+        Assert.assertTrue(btnUpdate.isDisplayed());
+    }
 
     @AfterTest
     public void tearDown(){

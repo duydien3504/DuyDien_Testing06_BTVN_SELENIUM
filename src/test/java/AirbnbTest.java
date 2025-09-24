@@ -22,7 +22,7 @@ public class AirbnbTest {
         Thread.sleep(10000);
     }
 
-    @Test(enabled = false)
+    @Test
     public void homeTest() throws InterruptedException{
 //        Testlogo
         WebElement nameLogo = driver.findElement(By.xpath("//span[text()='airbnb']"));
@@ -38,7 +38,70 @@ public class AirbnbTest {
         Assert.assertTrue(avatarMenu.isDisplayed());
     }
 
-//div[text()='Khách']/following-sibling::div/button[.='+']
+    @Test
+    public void testSearchLocation() {
+        WebElement SearchLocation = driver.findElement(By.xpath("//div[@class='grid grid-cols-12 smm:grid-cols-1 border-2 border-gray-300 md:rounded-full']"));
+        Assert.assertTrue(SearchLocation.isDisplayed());
+    }
+
+    @Test
+    public void testSearchDay() {
+        WebElement SearchDay = driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer') and contains(@class,'flex-col')]//p"));
+        Assert.assertTrue(SearchDay.isDisplayed());
+    }
+
+    @Test
+    public void testSearchGuest() {
+        WebElement searchGuest = driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer') and contains(@class,'flex justify-center')]//p"));
+        Assert.assertTrue(searchGuest.isDisplayed());
+    }
+
+    @Test
+    public void testMinusBtn() throws InterruptedException{
+        WebElement searchGuest = driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer') and contains(@class,'flex justify-center')]//p"));
+        searchGuest.click();
+        Thread.sleep(1000);
+        WebElement minusBtn = driver.findElement(By.xpath("//div[contains(@class, 'text-md') and text()='Khách']/./following-sibling::div[1]//button[1]"));
+        Assert.assertTrue(minusBtn.isDisplayed());
+    }
+
+
+    @Test
+    public void testIncrementBtn() throws InterruptedException{
+        WebElement searchGuest = driver.findElement(By.xpath("//div[contains(@class,'cursor-pointer') and contains(@class,'flex justify-center')]//p"));
+        searchGuest.click();
+        Thread.sleep(1000);
+        WebElement incrementBtn = driver.findElement(By.xpath("//div[contains(@class, 'text-md') and text()='Khách']/./following-sibling::div[1]//button[2]"));
+        Assert.assertTrue(incrementBtn.isDisplayed());
+    }
+
+
+    @Test
+    public void testTypeBtn() {
+        WebElement typeOfPlace = driver.findElement(By.xpath("//div[@id='root']/div[2]/div[2]//button[1]"));
+        Assert.assertTrue(typeOfPlace.isDisplayed());
+    }
+
+
+    @Test
+    public void testPriceBtn() {
+        WebElement btnPrice = driver.findElement(By.xpath("//div[@id='root']/div[2]/div[2]//button[2]"));
+        Assert.assertTrue(btnPrice.isDisplayed());
+    }
+
+    @Test
+    public void testNameLocation() {
+        WebElement nameLocation = driver.findElement(By.xpath("//div[@id='root']/div[3]//a[2]//h2"));
+        Assert.assertTrue(nameLocation.isDisplayed());
+    }
+
+    @Test
+    public void testTimeDrive() {
+        WebElement txtTimeDrive = driver.findElement(By.xpath("//div[@id='root']/div[3]//a[3]//p"));
+        Assert.assertTrue(txtTimeDrive.isDisplayed());
+    }
+
+    //div[text()='Khách']/following-sibling::div/button[.='+']
     //button[text()='Loại nơi ở']
     //h2[text()='Hồ Chí Minh']/parent::div
 

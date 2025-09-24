@@ -53,7 +53,23 @@ public class AmazonTest {
         WebElement itemResult = driver.findElement(By.xpath("//h2[contains(@class, 'a-size-base-plus a-spacing-none a-color-base a-text-normal')]//span[contains(text(), 'Unisex-Adult Samba Indoor')]"));
         Assert.assertTrue(itemResult.isDisplayed());
 
+        WebElement title = driver.findElement(By.xpath("//h2[@id='loom-desktop-top-slot_us-slds-sp-2-t1-a2-heading']"));
+        Assert.assertTrue(title.isDisplayed());
 
+        WebElement divImg = driver.findElement(By.xpath("//div[@cel_widget_id='MAIN-SEARCH_RESULTS-4']//div[@data-cy='image-container']"));
+        Assert.assertTrue(divImg.isDisplayed());
+
+        WebElement brandName = driver.findElement(By.xpath("//div[@cel_widget_id='MAIN-SEARCH_RESULTS-4']//div[@data-cy='title-recipe']//h2[1]//span"));
+        Assert.assertTrue(brandName.isDisplayed());
+
+        WebElement dayDelivery = driver.findElement(By.xpath("//div[@cel_widget_id='MAIN-SEARCH_RESULTS-4']//div[@data-cy='delivery-recipe']//span[contains(@aria-label, 'Delivery')]"));
+        Assert.assertTrue(dayDelivery.isDisplayed());
+
+        WebElement listPrice = driver.findElement(By.xpath("//div[@cel_widget_id='MAIN-SEARCH_RESULTS-4']//div[@data-cy='price-recipe']//div[contains(@aria-hidden, 'List')]"));
+        Assert.assertTrue(listPrice.isDisplayed());
+
+        WebElement price = driver.findElement(By.xpath("//div[@cel_widget_id='MAIN-SEARCH_RESULTS-4']//div[@data-cy='price-recipe']//a//span[contains(@class,'a-price') and @data-a-size='xl']"));
+        Assert.assertTrue(price.isDisplayed());
     }
 
 
